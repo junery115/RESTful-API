@@ -1,0 +1,31 @@
+ip: 192.168.10.14
+memory: 512p
+cpus: 2
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    -
+        map: 'C:\RESTfulAPI'
+        to: /home/vagrant/code
+	
+sites:
+    -
+        map: restfulapi.local
+        to: /home/vagrant/code/public
+	    php: "7.2"
+	
+databases:
+    - homestead
+features:	
+    -
+        mariadb: false
+    -
+        ohmyzsh: false
+    -
+        webdriver: false
+name: restfulapi
+hostname: restfulapi
+
