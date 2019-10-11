@@ -16,14 +16,15 @@ class UserTransformer extends TransformerAbstract
     {
         return [
             'identifier' => (int)$user->id,
-            'name' => (string)$user->id,
+            'name' => (string)$user->name,
             'email' => (string)$user->email,
             'isVerified' => (int)$user->verified,
             'isAdmin' => ($user->admin === 'true'),
-            'creationDate' => $user->create_at,
-            'lastChange' => $user->updated_at,
+            'creationDate' => (string)$user->create_at,
+            'lastChange' => (string)$user->updated_at,
             'deletedDate' => isset($user->create_at) ? (string) $user->deleted_at : null, 
 
         ];
+
     }
 }

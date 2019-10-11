@@ -1,6 +1,8 @@
 <?php
 
 use App\Product;
+use App\Transformers\CategoryTransformer;
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +13,7 @@ class Category extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
+    public $transformer = CategoryTransformer::class;
     protected $fillable = [
         'name', 
         'description',
