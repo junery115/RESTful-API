@@ -24,7 +24,50 @@ class TransactionTransformer extends TransformerAbstract
             'deletedDate' => isset($transaction->deleted_at) ? (string) $transaction->deleted_at : null,
 
 
+            'links' => [
+
+                [
+                'rel' => 'self',
+                'href' => route('transactions.show', $transaction->id),
+                ],
+               
+                [
+                'rel' => 'transaction.categories',
+                'href' => route('transactions.categories.index', $transaction->id),
+                ],
+              
+                [
+                'rel' => 'transaction.seller',
+                'href' => route('transactions.sellers.index', $transaction->id),
+                ],
+
+                [
+                    'rel' => 'buyer',
+                    'href' => route('buyers.show', $transaction->buyer_id),
+                ],
+
+                [
+                    'rel' => 'product',
+                    'href' => route('products.show', $transaction->product_id),
+                ]
+                
+            ]
 
         ];
+    }
+    public static function originalAttribute($index){
+                $attributes = [
+            'identifier' => 'id',
+            'quantity' => 'quantity',
+            'buyer' => 'buyer_id',
+            'product' => 'product_id',
+            'creationDate' => 'create_at',
+            'lastChange' => 'updated_at',
+            'deletedDate' => 'deleted_at',
+
+        ];
+
+        // here we make sure that only the attributes here are received so if something like the password is used we will just return null
+        return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 }

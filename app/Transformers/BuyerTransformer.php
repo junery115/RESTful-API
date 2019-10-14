@@ -27,4 +27,19 @@ class BuyerTransformer extends TransformerAbstract
         ];
         
     }
+    public static function originalAttribute($index){
+        $attributes = [
+         'identifier' => 'id',
+        'name' => 'name',
+        'email' => 'email',
+        'isVerified' => 'verified',
+        'creationDate' => 'create_at',
+        'lastChange' => 'updated_at',
+        'deletedDate' => 'deleted_at',
+
+         ];
+
+// here we make sure that only the attributes here are received so if something like the password is used we will just return null
+            return isset($attributes[$index]) ? $attributes[$index] : null;
+      }
 }

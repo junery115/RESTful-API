@@ -17,7 +17,7 @@ class SellerTransformer extends TransformerAbstract
     {
         return [
             'identifier' => (int)$seller->id,
-            'name' => (string)$seller->id,
+            'name' => (string)$seller->name,
             'email' => (string)$seller->email,
             'isVerified' => (int)$seller->verified,
             'creationDate' => (string)$seller->create_at,
@@ -25,4 +25,20 @@ class SellerTransformer extends TransformerAbstract
             'deletedDate' => isset($seller->create_at) ? (string) $seller->deleted_at : null, 
         ];
     }
+
+    public static function originalAttribute($index){
+        $attributes = [
+         'identifier' => 'id',
+        'name' => 'name',
+        'email' => 'email',
+        'isVerified' => 'verified',
+        'creationDate' => 'create_at',
+        'lastChange' => 'updated_at',
+        'deletedDate' => 'deleted_at',
+
+         ];
+
+// here we make sure that only the attributes here are received so if something like the password is used we will just return null
+            return isset($attributes[$index]) ? $attributes[$index] : null;
+      }
 }

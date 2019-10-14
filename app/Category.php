@@ -1,10 +1,9 @@
 <?php
+namespace App;
+
 
 use App\Product;
 use App\Transformers\CategoryTransformer;
-
-namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
