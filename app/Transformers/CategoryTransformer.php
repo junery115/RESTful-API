@@ -66,6 +66,20 @@ class CategoryTransformer extends TransformerAbstract
         // here we make sure that only the attributes here are received so if something like the password is used we will just return null
         return isset($attributes[$index]) ? $attributes[$index] : null;
     }
+    public static function transformedAttribute($index){
+                $attributes = [
+            'id' => 'identifier',
+             'name'=>'title',
+            'description'=>'details',
+            'create_at'=>'creationDate' ,
+            'updated_at'=>'lastChange' ,
+            'deleted_at'=>'deletedDate' ,
+
+        ];
+
+        // here we make sure that only the attributes here are received so if something like the password is used we will just return null
+        return isset($attributes[$index]) ? $attributes[$index] : null;
+    }
 
 }
 

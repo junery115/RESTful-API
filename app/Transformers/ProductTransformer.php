@@ -61,16 +61,16 @@ class ProductTransformer extends TransformerAbstract
         
      public static function originalAttribute($index){
                 $attributes = [
-            'identifier' => 'id',
-            'title' => 'name',
-            'details' => 'description',
-            'stock' => 'quantity',
-            'situation' => 'status',
-            'picture' => 'image',
-            'seller' => 'seller_id',
-            'creationDate' => 'create_at',
-            'lastChange' => 'updated_at',
-            'deletedDate' => 'deleted_at',
+            'id' => 'identifier',
+             'name'=> 'title',
+             'description' => 'details',
+            'quantity'=> 'stock',
+             'status' => 'situation',
+            'image' => 'picture',
+             'seller_id' => 'seller',
+            'create_at'=>'creationDate',
+            'updated_at' => 'lastChange',
+            'deleted_at'=>'deletedDate' ,
 
         ];
 

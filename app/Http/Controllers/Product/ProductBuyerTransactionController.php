@@ -8,11 +8,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Seller;
 use App\Transaction;
+use App\Transformers\TransactionTransformer;
 use App\User;
 use Illuminate\Support\Facades\DB;
 
 class ProductBuyerTransactionController extends ApiController
 {
+
+    public function __construct(){
+        parent::__construct();
+
+        $this->middleware('transform.input:' . TransactionTransformer::class)->only(['store']);
+    }
+    
     
     /**
      * Store a newly created resource in storage.
@@ -22,6 +30,7 @@ class ProductBuyerTransactionController extends ApiController
      */
     public function store(Request $request, Product $product, User $buyer) 
     {
+        
         $rules = [
             'quantity' => 'required|integer|min:1'
         ];
